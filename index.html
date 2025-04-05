@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Therapy Scheduler - Chatbot</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f0f4f8, #e8eaf6);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .chat-container {
+      width: 80%;
+      max-width: 600px;
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 85vh;
+      position: relative;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .chat-container:hover {
+      transform: scale(1.01);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .chat-header {
+      background-color: #6a1b9a;
+      color: white;
+      padding: 18px 24px;
+      text-align: center;
+    }
+
+    .chat-header h1 {
+      font-size: 1.5em;
+      margin: 0;
+    }
+
+    .chat-messages {
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      background-color: #f9f9f9;
+    }
+
+    .message {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .message img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .user-message {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    .user-message img {
+      margin-left: 10px;
+      margin-right: 0;
+    }
+
+    .message-content {
+      max-width: 70%;
+      padding: 12px 16px;
+      border-radius: 18px;
+      font-size: 0.95em;
+      line-height: 1.4;
+    }
+
+    .bot-message .message-content {
+      background-color: #e1f5fe;
+      color: #0277bd;
+      border-top-left-radius: 0;
+    }
+
+    .user-message .message-content {
+      background-color: #f3e5f5;
+      color: #6a1b9a;
+      border-top-right-radius: 0;
+    }
+
+    .chat-input-container {
+      display: flex;
+      padding: 12px;
+      border-top: 1px solid #ddd;
+      background-color: #fff;
+    }
+
+    .chat-input-container input[type="text"] {
+      flex-grow: 1;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      margin-right: 10px;
+      font-size: 1em;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .chat-input-container input[type="text"]:focus {
+      outline: none;
+      box-shadow: 0 0 8px #6a1b9a;
+    }
+
+    .chat-input-container button {
+      padding: 10px 20px;
+      background-color: #6a1b9a;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .chat-input-container button:hover {
+      background-color: #4a148c;
+    }
+
+    .page-logo {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+    }
+
+    .page-logo img {
+      height: 70px;
+      border-radius: 8px;
+    }
+
+    .member-info {
+      position: fixed;
+      bottom: 10px;
+      left: 20px;
+      font-size: 0.9em;
+      color: #666;
+      font-family: monospace;
+      z-index: 0;
+    }
+
+    @media (max-width: 768px) {
+      .chat-container {
+        width: 95%;
+      }
+
+      .page-logo img {
+        height: 50px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Fixed Logo -->
+  <div class="page-logo">
+    <img src="lpu-sae-india-collegiate-club-logo-29B436A816-seeklogo.com.png" alt="Logo">
+  </div>
+
+  <div class="chat-container">
+    <div class="chat-header">
+      <h1>Therapy Scheduler - Gemini Chatbot</h1>
+    </div>
+
+    <div class="chat-messages" id="chat-messages">
+      <!-- Example Messages -->
+      <div class="message bot-message">
+        <img src="bot.png" alt="Bot">
+        <div class="message-content">Hello, how can I assist you today?</div>
+      </div>
+      <div class="message user-message">
+        <img src="user.png" alt="User">
+        <div class="message-content">Schedule a session for tomorrow.</div>
+      </div>
+    </div>
+
+    <div class="chat-input-container">
+      <input type="text" id="user-input" placeholder="Type your message..." />
+      <button id="send-button">Send</button>
+    </div>
+  </div>
+
+  <!-- Member Info -->
+  <div class="member-info">
+    <div>Saksham - 12322757</div>
+    <div>Ashwini Kumar- 12315640</div>
+    <div>Robin Sharma - 12306845</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
